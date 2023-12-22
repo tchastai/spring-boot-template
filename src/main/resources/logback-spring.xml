@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="dev">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <Pattern>
+                    %blue(%d{HH:mm:ss.SSS}) %green([%t]) %highlight(%-5level) %cyan(%logger{36}) %cyan(%line:%class) - %msg%n%throwable
+                </Pattern>
+            </encoder>
+        </appender>
+
+        <logger name="com.spring.template" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="!dev">
+
+        <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            </encoder>
+        </appender>
+
+        <root level="info">
+            <appender-ref ref="jsonConsoleAppender"/>
+        </root>
+
+    </springProfile>
+</configuration>
