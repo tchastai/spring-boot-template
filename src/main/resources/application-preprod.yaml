@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+  connection:
+    timeout: -1
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring-template
+    username: template
+    password: template
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
